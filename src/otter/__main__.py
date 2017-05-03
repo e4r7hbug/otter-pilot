@@ -18,9 +18,13 @@ def main():
 
 
 @click.group()
-def root():
+@click.option('-v', '--verbose', count=True, help='More verbose, use up to three times')
+def root(verbose):
     """Ready for takeoff."""
     click.secho('Aye aye, otter away!', fg='green')
+
+    verbosity = logging.root.getEffectiveLevel() - 10 * verbose or 1
+    logging.getLogger(__package__).setLevel(verbosity)
 
 
 def link_commands(pilot_root_group):
