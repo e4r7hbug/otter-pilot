@@ -30,6 +30,8 @@ setup(
     author_email='e4r7hbug@gmail.com',
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
+    setup_requires=['setuptools_scm'],
+    use_scm_version=True,
     install_requires=reqs_list,
     include_package_data=True,
     namespace_packages=['otter'],
